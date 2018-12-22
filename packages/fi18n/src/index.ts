@@ -45,7 +45,7 @@ export function i18n<T extends Translations>(
         }
       }
 
-      return replace(tr[0], parameters);
+      return replace(tr[0] || template, parameters);
     }
 
     return replace(tr as string, parameters);
