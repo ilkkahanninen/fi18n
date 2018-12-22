@@ -1,0 +1,16 @@
+{
+  "name": "fi18n",
+  "version": "0.1.0",
+  "description": "Functional i18n library",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf lib && tsc",
+    "test": "ts-node ../../node_modules/tape/bin/tape tests/**/*.ts | faucet",
+    "prepare": "npm run build"
+  },
+  "author": "Ilkka Hänninen",
+  "license": "MIT",
+  "dependencies": {
+    "fi18n-locales": "^0.1.0"
+  }
+}

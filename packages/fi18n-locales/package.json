@@ -1,0 +1,13 @@
+{
+  "name": "fi18n-locales",
+  "version": "0.1.0",
+  "description": "Locales for fi18n libraries",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf lib && tsc",
+    "test": "ts-node ../../node_modules/tape/bin/tape tests/**/*.ts | faucet",
+    "prepare": "npm run build"
+  },
+  "author": "Ilkka Hänninen",
+  "license": "MIT"
+}
