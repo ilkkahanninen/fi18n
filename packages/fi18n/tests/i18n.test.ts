@@ -1,5 +1,5 @@
 import test from "tape";
-import { initI18n } from "../src";
+import { i18n } from "../src";
 
 const translations = {
   "Hello world!": "Hei vaan, maailma!",
@@ -8,7 +8,7 @@ const translations = {
 };
 
 test("Translation function works", t => {
-  const T = initI18n("fi", translations);
+  const T = i18n("fi", translations);
 
   t.equals(T("Hello world!"), translations["Hello world!"]);
   t.equals(T("I am $name", { name: "Ilkka" }), "Minä olen Ilkka");

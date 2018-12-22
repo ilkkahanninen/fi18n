@@ -10,15 +10,18 @@ const parseNumericParamKey = (template: string): string | undefined => {
 const ensureNumber = (n: string | number): number =>
   typeof n === "string" ? parseFloat(n) : n;
 
-export const initI18n = (languageCode: string, translations: Translations) => {
+export const i18n = <T extends Translations>(
+  languageCode: string,
+  translations: T
+) => {
   const pluralRule = getPluralRule(languageCode) || defaultPluralRule;
 
-  return (template: string, parameters?: TParameters) => {
+  return (template: keyof T, parameters?: TParameters) => {
     const tr = translations[template] || template;
 
     if (Array.isArray(tr)) {
       if (parameters) {
-        const numberKey = parseNumericParamKey(template);
+        const numberKey = parseNumericParamKey(template as string);
         if (numberKey) {
           const value = ensureNumber(parameters[numberKey]);
           if (value !== undefined) {
@@ -33,6 +36,6 @@ export const initI18n = (languageCode: string, translations: Translations) => {
       return replace(tr[0], parameters);
     }
 
-    return replace(tr, parameters);
+    return replace(tr as string, parameters);
   };
 };
